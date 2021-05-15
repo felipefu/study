@@ -2,38 +2,37 @@ package com.study.pratices.codility;
 
 public class anagram {
 
-    public static boolean nestedAnagrams(String phraseInput, String phraseAnagram) {
+  public static boolean nestedAnagrams(String phraseInput, String phraseAnagram) {
 
-        String[] inputWords = phraseInput.split(" ");
-        String[] anagramWords = phraseAnagram.split(" ");
+    String[] inputWords = phraseInput.split(" ");
+    String[] anagramWords = phraseAnagram.split(" ");
 
-        for (String inputWord : inputWords) {
-            boolean wordHasMatch = false;
-            for (String anagramWord : anagramWords) {
+    for (String inputWord : inputWords) {
+      boolean wordHasMatch = false;
+      for (String anagramWord : anagramWords) {
 
-                if (inputWord.length() == anagramWord.length()) {
+        if (inputWord.length() == anagramWord.length()) {
 
-                    String inputWordAux = inputWord;
+          String inputWordAux = inputWord;
 
-                    for (char letter : anagramWord.toCharArray()) {
+          for (char letter : anagramWord.toCharArray()) {
 
-                        if (inputWordAux.contains(String.valueOf(letter))) {
-                            inputWordAux = inputWordAux.replaceFirst(String.valueOf(letter), "");
-                        } else {
-                            break;
-                        }
-                    }
-                    if (inputWordAux.length() == 0) {
-                        wordHasMatch = true;
-                        break;
-                    }
-                }
+            if (inputWordAux.contains(String.valueOf(letter))) {
+              inputWordAux = inputWordAux.replaceFirst(String.valueOf(letter), "");
+            } else {
+              break;
             }
-            if (!wordHasMatch) {
-                return false;
-            }
+          }
+          if (inputWordAux.length() == 0) {
+            wordHasMatch = true;
+            break;
+          }
         }
-        return true;
+      }
+      if (!wordHasMatch) {
+        return false;
+      }
     }
+    return true;
+  }
 }
-

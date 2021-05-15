@@ -1,83 +1,78 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Challenge {
 
+  public static int[] solution1(int[] A, int K) {
 
-    public static int[] solution1(int[] A, int K) {
+    int[] result = new int[A.length];
 
-        int[] result = new int[A.length];
+    for (int i = 0; i < A.length - 1; i++) {
 
-        for (int i = 0; i < A.length - 1; i++) {
-
-            result[i] = A[A.length - i - K];
-        }
-
-
-        return result;
+      result[i] = A[A.length - i - K];
     }
 
-    public static int[] solution(int[] A, int K) {
+    return result;
+  }
 
-        int[] result = A;
+  public static int[] solution(int[] A, int K) {
 
-        if (A.length > 0) {
-        for (int j = 0; j < K; j++) {
+    int[] result = A;
 
-            result = shift(result);
+    if (A.length > 0) {
+      for (int j = 0; j < K; j++) {
 
-        } }
-        return result;
+        result = shift(result);
+      }
+    }
+    return result;
+  }
+
+  private static int[] shift(int[] a) {
+
+    int[] result = new int[a.length];
+
+    for (int i = 0; i < a.length - 1; i++) {
+
+      result[i + 1] = a[i];
     }
 
-    private static int[] shift(int[] a) {
+    result[0] = a[a.length - 1];
 
-        int[] result = new int[a.length];
+    return result;
+  }
 
-        for (int i = 0; i < a.length - 1; i++) {
+  public static boolean nestedAnagrams(String phraseInput, String phraseAnagram) {
 
-            result[i+1] = a[i];
-        }
+    String[] inputWords = phraseInput.split(" ");
+    String[] anagramWords = phraseAnagram.split(" ");
 
-        result[0] = a[a.length - 1];
+    for (String inputWord : inputWords) {
+      boolean wordHasMatch = false;
+      for (String anagramWord : anagramWords) {
 
-        return result;
-    }
+        if (inputWord.length() == anagramWord.length()) {
 
+          String inputWordAux = inputWord;
 
-    public static boolean nestedAnagrams(String phraseInput, String phraseAnagram) {
+          for (char letter : anagramWord.toCharArray()) {
 
-        String[] inputWords = phraseInput.split(" ");
-        String[] anagramWords = phraseAnagram.split(" ");
-
-        for (String inputWord : inputWords) {
-            boolean wordHasMatch = false;
-            for (String anagramWord : anagramWords) {
-
-                if (inputWord.length() == anagramWord.length()) {
-
-                    String inputWordAux = inputWord;
-
-                    for (char letter : anagramWord.toCharArray()) {
-
-                        if (inputWordAux.contains(String.valueOf(letter))) {
-                            inputWordAux = inputWordAux.replaceFirst(String.valueOf(letter), "");
-                        } else {
-                            break;
-                        }
-                    }
-                    if (inputWordAux.length() == 0) {
-                        wordHasMatch = true;
-                        break;
-                    }
-                }
+            if (inputWordAux.contains(String.valueOf(letter))) {
+              inputWordAux = inputWordAux.replaceFirst(String.valueOf(letter), "");
+            } else {
+              break;
             }
-            if (!wordHasMatch) {
-                return false;
-            }
+          }
+          if (inputWordAux.length() == 0) {
+            wordHasMatch = true;
+            break;
+          }
         }
-        return true;
+      }
+      if (!wordHasMatch) {
+        return false;
+      }
     }
+    return true;
+  }
 }
