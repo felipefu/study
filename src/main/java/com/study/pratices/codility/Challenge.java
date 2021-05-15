@@ -1,6 +1,5 @@
 package com.company;
 
-
 public class Challenge {
 
   public static int[] solution1(int[] A, int K) {
