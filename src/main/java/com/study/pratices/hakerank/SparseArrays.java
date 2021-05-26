@@ -5,9 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// reference: https://www.hackerrank.com/challenges/sparse-arrays/problem
 public class SparseArrays {
-
-  // reference: https://www.hackerrank.com/challenges/sparse-arrays/problem
 
   public static List<Integer> matchingStrings(List<String> strings, List<String> queries) {
 
